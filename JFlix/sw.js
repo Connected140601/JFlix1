@@ -16,7 +16,19 @@ const blockedDomains = [
   'popads.net',
   'adsterra.com',
   'mixadvert.com',
-  'static.vidsrc.pro'
+  'static.vidsrc.pro',
+  'appmontize.gotrackier.com',
+  'nestlelento.shop',
+  'invol.co',
+  't.co',
+  'c.lazada.com.ph',
+  'w0we.com',
+  'cropped.link',
+  '1xlite-963536.top',
+  'xqckxrlemby.com',
+  'bc.game',
+  'shopee.ph',
+  'jurnal-news-dkf6eue3a6evbghj.indonesiacentral-01.azurewebsites.net'
 ];
 
 self.addEventListener('fetch', (event) => {
