@@ -44,6 +44,9 @@
   ],
   "screenshots": [],
   "iarc_rating_id": "RATING_ID_PLACEHOLDER",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope_extensions": [],
   "launch_handler": {
     "client_mode": "focus-existing"
   }
