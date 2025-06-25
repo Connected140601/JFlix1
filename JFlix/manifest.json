@@ -1,0 +1,23 @@
+{
+  "name": "JFlix",
+  "short_name": "JFlix",
+  "description": "Stream Movies, TV Shows, Anime, and Korean Dramas all in one place",
+  "start_url": "/index.html",
+  "id": "/?source=pwa",
+  "display": "standalone",
+  "scope": "/",
+  "background_color": "#141414",
+  "theme_color": "#e50914",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": [
+    "entertainment",
+    "movies",
+    "tv"
+  ],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}
