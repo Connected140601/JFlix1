@@ -50,15 +50,44 @@ self.addEventListener('install', event => {
   );
 });
 
+const adBlockList = [
+  'antiadblocksystems.com',
+  'd3cod80thn7qnd.cloudfront.net',
+  'doubleclick.net',
+  'googlesyndication.com',
+  'google-analytics.com',
+  'adnxs.com',
+  'adzerk.net',
+  'criteo.com',
+  'pubmatic.com',
+  'rubiconproject.com',
+  'openx.net'
+];
+
 self.addEventListener('fetch', event => {
+  const requestUrl = new URL(event.request.url);
+
+  if (adBlockList.some(domain => requestUrl.hostname.includes(domain))) {
+    console.log('Blocked ad request to:', requestUrl.hostname);
+    event.respondWith(new Response(null, {
+      status: 204,
+      statusText: 'No Content'
+    }));
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(event.request).then(response => {
+        const fetchPromise = fetch(event.request).then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        });
+        return response || fetchPromise;
+      });
+    })
   );
 });
 
